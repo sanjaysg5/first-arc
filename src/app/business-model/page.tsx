@@ -31,7 +31,7 @@ export default function BusinessModelPage() {
         title={
           <>
             Different data needs require different{" "}
-            <em className="text-accent">licensing models</em>.
+            <span className="text-accent">licensing models</span>.
           </>
         }
         subtitle="Some buyers need a fixed historical dataset. Others need an ongoing feed, an exclusive arrangement, or an evaluation suite. We scope the model to the need."

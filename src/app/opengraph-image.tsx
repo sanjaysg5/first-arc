@@ -17,7 +17,7 @@ export default function OpengraphImage() {
           background: "#f4f1ea",
           padding: "72px",
           position: "relative",
-          fontFamily: "Georgia, serif",
+          fontFamily: "Helvetica, Arial, sans-serif",
         }}
       >
         {/* Concentric arc rings, cropped off the right edge */}
@@ -88,7 +88,6 @@ export default function OpengraphImage() {
               fontSize: 76,
               lineHeight: 1.04,
               color: "#1f5a7a",
-              fontStyle: "italic",
             }}
           >
             The first arc

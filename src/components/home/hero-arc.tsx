@@ -107,7 +107,7 @@ export function HeroArc() {
               y={s.y + 4}
               fill="var(--graphite)"
               style={{
-                fontFamily: "var(--font-space-mono), monospace",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontSize: "12px",
                 letterSpacing: "0.06em",
               }}
@@ -127,7 +127,7 @@ export function HeroArc() {
             textAnchor="middle"
             fill="var(--accent-strong)"
             style={{
-              fontFamily: "var(--font-space-mono), monospace",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: "12px",
               letterSpacing: "0.14em",
             }}
@@ -141,7 +141,7 @@ export function HeroArc() {
           x="24"
           y="586"
           fill="var(--graphite-dim)"
-          style={{ fontFamily: "var(--font-space-mono), monospace", fontSize: "11px", letterSpacing: "0.14em" }}
+          style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "11px", letterSpacing: "0.14em" }}
         >
           PUBLIC INFORMATION
         </text>

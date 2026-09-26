@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroArc } from "@/components/home/hero-arc";
+import { SystemPicker } from "@/components/home/system-picker";
 import { Reveal } from "@/components/util/reveal";
 import { ArcField } from "@/components/arc/arc-field";
 import { cta } from "@/lib/site";
@@ -26,7 +27,7 @@ export default function HomePage() {
           <div className="max-w-xl">
             <p className="eyebrow animate-fade-up">Enterprise Data × AI</p>
             <h1 className="display mt-6 text-[clamp(2.7rem,6.4vw,4.7rem)] animate-fade-up">
-              The <em className="text-accent">first arc</em> of organizational
+              The <span className="text-accent">first arc</span> of organizational
               intelligence.
             </h1>
             <p className="lede mt-7 max-w-md text-lg animate-fade-up">
@@ -35,13 +36,18 @@ export default function HomePage() {
               organizations work.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
+              <Button asChild variant="deep" size="lg">
                 <Link href={cta.buyer.href}>
                   Tell us what data you need
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button
+                asChild
+                variant="primary"
+                size="lg"
+                className="font-semibold"
+              >
                 <Link href={cta.supplier.href}>License your data</Link>
               </Button>
             </div>
@@ -280,8 +286,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============================ TRUST ============================ */}
+      {/* ==================== SYSTEM PICKER — supplier on-ramp ==================== */}
       <section className="border-b border-line bg-paper-dim">
+        <div className="container-arc py-20 md:py-28">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Start here</p>
+            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
+              What does your company run on?
+            </h2>
+            <p className="lede mt-6 max-w-xl text-lg">
+              Tell us where your operating history lives. We&apos;ll pre-fill a
+              licensing enquiry — reviewed privately, never published.
+            </p>
+          </Reveal>
+          <Reveal delay={100} className="mt-12">
+            <SystemPicker />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============================ TRUST ============================ */}
+      <section className="border-b border-line">
         <div className="container-arc py-20 md:py-28">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">Trust &amp; quality</p>

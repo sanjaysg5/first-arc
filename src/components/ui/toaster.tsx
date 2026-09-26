@@ -13,7 +13,7 @@ export function Toaster() {
           color: "var(--ink)",
           border: "1px solid var(--line)",
           borderRadius: "0.75rem",
-          fontFamily: "var(--font-space-grotesk), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
         },
       }}
     />

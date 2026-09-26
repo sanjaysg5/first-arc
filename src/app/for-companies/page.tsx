@@ -14,14 +14,71 @@ export const metadata: Metadata = {
     "Explore whether selected operational data can be responsibly licensed for AI — while you retain ownership of the underlying business, IP, and customer relationships.",
 };
 
-const faqs = [
+const glance: { label: string; value: string }[] = [
   {
-    q: "What does licensing mean?",
-    a: "You grant defined, permissioned access to selected historical data under agreed terms. You are not selling your business and you are not handing over your systems — you are licensing a scoped, de-identified-where-appropriate dataset for a specific use.",
+    label: "Counterparty",
+    value:
+      "A qualified AI buyer, introduced and managed by First Arc. No public marketplace or listing.",
   },
   {
-    q: "What do companies get paid for?",
-    a: "Compensation reflects the value of selected operational data to a qualified buyer — its signal, structure, and relevance to a defined AI capability. Each engagement is scoped and priced individually; there is no public rate card.",
+    label: "What's licensed",
+    value:
+      "A defined, bounded dataset of selected operational history — de-identified where appropriate.",
+  },
+  {
+    label: "What stays yours",
+    value:
+      "Your business, IP, and customer relationships. You keep the underlying data.",
+  },
+  {
+    label: "Cost to explore",
+    value: "None. Assessing your data and whether there's a fit carries no fee.",
+  },
+  {
+    label: "Exclusivity",
+    value: "Non-exclusive by default; exclusive terms only if you agree to them.",
+  },
+  {
+    label: "Review",
+    value:
+      "Rights, privacy, and security are reviewed before anything is prepared or moves.",
+  },
+  {
+    label: "Anonymization",
+    value:
+      "Identifying fields are handled as part of preparing the dataset, before delivery.",
+  },
+  {
+    label: "Pricing",
+    value:
+      "Scoped per engagement by signal and structure, not raw volume. No public rate card.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Does First Arc buy our data, or broker it?",
+    a: "We are the managed layer between your operational data and the AI teams that license it. We handle discovery, diligence, privacy, preparation, and licensing — so you deal with one trusted counterparty, not a public marketplace.",
+  },
+  {
+    q: "What does licensing actually mean?",
+    a: "You grant defined, permissioned access to a selected, de-identified-where-appropriate dataset under agreed terms. You are not selling your business and you are not handing over your live systems.",
+  },
+  {
+    q: "What does it cost to explore?",
+    a: "Nothing to assess fit. There is no fee to have us review what you have and tell you whether there is a credible path forward.",
+  },
+  {
+    q: "How is data priced?",
+    a: "By signal, structure, and relevance to a defined AI capability — not by raw volume. Each engagement is scoped and priced individually; there is no public rate card.",
+  },
+  {
+    q: "Which companies qualify?",
+    a: "Any company with real operating history. The depth and texture of the record matter more than headcount or revenue.",
+  },
+  {
+    q: "What happens to the data afterwards?",
+    a: "Selected data is reviewed, de-identified where appropriate, structured, and licensed to a qualified buyer under defined terms. Use is bounded by the license.",
   },
 ];
 
@@ -58,7 +115,7 @@ export default function ForCompaniesPage() {
         title={
           <>
             Your operational history may be an{" "}
-            <em className="text-accent">AI data asset</em>.
+            <span className="text-accent">AI data asset</span>.
           </>
         }
         subtitle="Explore licensing selected operational data while retaining ownership of the underlying business — subject to legal, privacy, and security review."
@@ -108,10 +165,16 @@ export default function ForCompaniesPage() {
         </div>
       </section>
 
-      {/* =========================== WHAT / WHY =========================== */}
+      {/* =============================== FAQ =============================== */}
       <section className="border-b border-line bg-paper-dim">
         <div className="container-arc py-20 md:py-28">
-          <div className="border-t border-line">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Questions</p>
+            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
+              Questions companies ask first.
+            </h2>
+          </Reveal>
+          <div className="mt-12 border-t border-line">
             {faqs.map((f, i) => (
               <Reveal
                 key={f.q}
@@ -159,6 +222,36 @@ export default function ForCompaniesPage() {
               </p>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ===================== LICENSING AT A GLANCE ===================== */}
+      <section className="border-b border-line bg-paper-dim">
+        <div className="container-arc py-20 md:py-28">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Licensing at a glance</p>
+            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
+              The shape of a licensing engagement.
+            </h2>
+            <p className="lede mt-6 text-lg">
+              A plain summary of how we work with companies. Every term is
+              confirmed with you before anything moves.
+            </p>
+          </Reveal>
+          <dl className="mt-12 border-t border-line">
+            {glance.map((row, i) => (
+              <Reveal
+                key={row.label}
+                delay={(i % 4) * 60}
+                className="grid gap-2 border-b border-line py-6 md:grid-cols-[0.5fr_1fr] md:gap-12"
+              >
+                <dt className="eyebrow eyebrow-muted pt-1">{row.label}</dt>
+                <dd className="text-[1.05rem] leading-relaxed text-ink">
+                  {row.value}
+                </dd>
+              </Reveal>
+            ))}
+          </dl>
         </div>
       </section>
 

@@ -34,7 +34,7 @@ export default function AboutPage() {
         title={
           <>
             Infrastructure for the transition from AI that knows things to AI
-            that can <em className="text-accent">operate in the real world</em>.
+            that can <span className="text-accent">operate in the real world</span>.
           </>
         }
       />
