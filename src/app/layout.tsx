@@ -1,28 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/site/site-chrome";
 import { Toaster } from "@/components/ui/toaster";
 
-const serif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+// Single app-wide typeface (Twitter/Chirp-style). Chirp is proprietary; Inter
+// is the standard free substitute. No italic styles are loaded.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const sans = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const mono = Space_Mono({
-  variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -77,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <SiteChrome>{children}</SiteChrome>

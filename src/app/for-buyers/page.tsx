@@ -54,7 +54,7 @@ export default function ForBuyersPage() {
         eyebrow="For AI buyers"
         title={
           <>
-            Tell us the data your <em className="text-accent">AI system</em> is
+            Tell us the data your <span className="text-accent">AI system</span> is
             missing.
           </>
         }

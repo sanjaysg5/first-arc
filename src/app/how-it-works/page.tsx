@@ -83,7 +83,7 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title={
           <>
-            From company to <em className="text-accent">capable AI</em> —
+            From company to <span className="text-accent">capable AI</span> —
             responsibly.
           </>
         }

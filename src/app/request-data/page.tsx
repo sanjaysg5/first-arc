@@ -15,7 +15,7 @@ export default function RequestDataPage() {
         eyebrow="For AI buyers"
         title={
           <>
-            Tell us the data your <em className="text-accent">AI system</em> is
+            Tell us the data your <span className="text-accent">AI system</span> is
             missing.
           </>
         }
@@ -24,6 +24,9 @@ export default function RequestDataPage() {
       <section className="border-b border-line">
         <div className="container-arc py-14 md:py-20">
           <div className="mx-auto max-w-3xl">
+            <p className="mb-6 text-sm text-graphite">
+              5 steps · about two minutes. An exploratory request — no obligation.
+            </p>
             <BuyerRequestForm />
           </div>
         </div>

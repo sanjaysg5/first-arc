@@ -33,7 +33,11 @@ const fieldsByStep: (keyof SupplierRequestInput)[][] = [
   ["licensing_interest", "license_preference", "excluded_data", "residency_constraints", "security_requirements", "notes"],
 ];
 
-export function SupplierRequestForm() {
+export function SupplierRequestForm({
+  defaultSystems = [],
+}: {
+  defaultSystems?: string[];
+}) {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
@@ -49,7 +53,7 @@ export function SupplierRequestForm() {
       contact_name: "",
       role: "",
       email: "",
-      systems: [],
+      systems: defaultSystems,
       history_years: "",
       estimated_volume: "",
       employees_represented: "",
