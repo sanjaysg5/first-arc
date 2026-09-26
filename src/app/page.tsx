@@ -2,17 +2,10 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroArc } from "@/components/home/hero-arc";
-import { SystemPicker } from "@/components/home/system-picker";
 import { Reveal } from "@/components/util/reveal";
 import { ArcField } from "@/components/arc/arc-field";
 import { cta } from "@/lib/site";
-import {
-  knowledgeLayers,
-  dataTypes,
-  process,
-  principles,
-  demandExamples,
-} from "@/lib/content";
+import { knowledgeLayers, dataTypes, demandExamples } from "@/lib/content";
 
 export default function HomePage() {
   return (
@@ -63,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================ PROBLEM ============================ */}
-      <section className="border-b border-line">
+      <section className="border-b border-line bg-paper-dim">
         <div className="container-arc py-20 md:py-28">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">Why this matters</p>
@@ -81,7 +74,7 @@ export default function HomePage() {
                 className={
                   i === 1
                     ? "bg-accent-soft p-8 md:p-10"
-                    : "bg-paper p-8 md:p-10"
+                    : "bg-card p-8 md:p-10"
                 }
               >
                 <div className="flex items-center gap-3">
@@ -95,7 +88,7 @@ export default function HomePage() {
           </div>
 
           <Reveal className="mt-14 flex items-baseline gap-4">
-            <span aria-hidden className="hidden h-px flex-1 bg-line sm:block" />
+            <span aria-hidden className="hidden h-px flex-1 bg-line-strong sm:block" />
             <p className="display text-[clamp(1.6rem,3vw,2.4rem)] text-ink">
               We work on the missing middle.
             </p>
@@ -104,88 +97,38 @@ export default function HomePage() {
       </section>
 
       {/* ========================== DATA TYPES ========================== */}
-      <section className="border-b border-line bg-paper-dim">
-        <div className="container-arc py-20 md:py-28">
-          <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="eyebrow">What we work with</p>
-              <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
-                Operational data is more than documents.
-              </h2>
-            </div>
-            <p className="lede max-w-sm text-[0.98rem]">
-              The value is not the number of files. It is the structure of the
-              work inside them — the sequence from problem to outcome.
-            </p>
-          </Reveal>
-
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {dataTypes.map((d, i) => (
-              <Reveal
-                key={d.title}
-                delay={(i % 4) * 70}
-                className={`flex flex-col p-7 ${
-                  i === 0
-                    ? "bg-deep text-on-deep sm:col-span-2"
-                    : "bg-card"
-                }`}
-              >
-                <h3
-                  className={`font-sans text-[1.05rem] font-medium leading-snug ${
-                    i === 0 ? "text-on-deep" : "text-ink"
-                  }`}
-                >
-                  {d.title}
-                </h3>
-                <p
-                  className={`mt-3 text-sm leading-relaxed ${
-                    i === 0 ? "text-on-deep-muted" : "text-graphite"
-                  }`}
-                >
-                  {d.blurb}
-                </p>
-                <p
-                  className={`mt-auto pt-5 font-mono text-[0.68rem] uppercase tracking-[0.12em] ${
-                    i === 0 ? "text-on-deep-accent" : "text-accent"
-                  }`}
-                >
-                  {d.systems}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================= HOW IT WORKS ========================= */}
       <section className="border-b border-line">
         <div className="container-arc py-20 md:py-28">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow">How it works</p>
+            <p className="eyebrow">What we work with</p>
             <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
-              From discovery to license.
+              Operational data is more than documents.
             </h2>
+            <p className="lede mt-6 text-lg">
+              Not the number of files — the structure of the work inside them.
+            </p>
           </Reveal>
 
-          <div className="mt-16 grid gap-x-8 gap-y-12 md:grid-cols-4">
-            {process.map((step, i) => (
-              <Reveal key={step.n} delay={i * 90} className="relative">
-                <div className="numeral text-4xl text-accent">{step.n}</div>
-                <div className="mt-5 h-px w-full bg-line">
-                  <div className="h-px w-8 bg-accent" />
-                </div>
-                <h3 className="display mt-5 text-2xl">{step.title}</h3>
-                <p className="lede mt-3 text-[0.96rem]">{step.blurb}</p>
-              </Reveal>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {dataTypes.slice(0, 6).map((d) => (
+              <div
+                key={d.title}
+                className="flex items-baseline justify-between gap-4 bg-card p-6"
+              >
+                <h3 className="font-medium leading-snug text-ink">{d.title}</h3>
+                <span className="shrink-0 font-mono text-[0.62rem] uppercase tracking-[0.1em] text-accent">
+                  {d.systems.split(" · ")[0]}
+                </span>
+              </div>
             ))}
           </div>
 
-          <Reveal className="mt-14">
+          <Reveal className="mt-12">
             <Link
               href="/how-it-works"
               className="link-arc inline-flex items-center gap-2 text-accent"
             >
-              Explore a data partnership
+              How licensing works, end to end
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
@@ -243,92 +186,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* =========================== SUPPLIERS =========================== */}
-      <section className="border-b border-line">
-        <div className="container-arc grid gap-14 py-20 md:py-28 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-          <Reveal className="max-w-lg">
-            <p className="eyebrow">For companies</p>
-            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
-              Your company has an asset you may not have priced.
-            </h2>
-            <p className="lede mt-6 max-w-md text-lg">
-              Operational history can contain valuable signals for AI. We help
-              companies explore whether selected historical data can be
-              responsibly licensed — without transferring ownership of the
-              underlying business.
-            </p>
-            <div className="mt-9">
-              <Button asChild size="lg">
-                <Link href={cta.supplier.href}>
-                  Explore licensing your data
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120} className="grid gap-4">
-            <div className="rounded-2xl border border-line bg-accent-soft p-7">
-              <p className="eyebrow">Licensed</p>
-              <p className="mt-3 text-[1.05rem] text-ink">
-                Selected, permissioned operational data — de-identified where
-                appropriate.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-line bg-card p-7">
-              <p className="eyebrow eyebrow-muted">Retained</p>
-              <p className="mt-3 text-[1.05rem] text-ink">
-                Your business, your IP, your customer relationships, and control
-                over what is never shared.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ==================== SYSTEM PICKER — supplier on-ramp ==================== */}
-      <section className="border-b border-line bg-paper-dim">
-        <div className="container-arc py-20 md:py-28">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Start here</p>
-            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
-              What does your company run on?
-            </h2>
-            <p className="lede mt-6 max-w-xl text-lg">
-              Tell us where your operating history lives. We&apos;ll pre-fill a
-              licensing enquiry — reviewed privately, never published.
-            </p>
-          </Reveal>
-          <Reveal delay={100} className="mt-12">
-            <SystemPicker />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============================ TRUST ============================ */}
-      <section className="border-b border-line">
-        <div className="container-arc py-20 md:py-28">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Trust &amp; quality</p>
-            <h2 className="display mt-6 text-[clamp(2rem,4.4vw,3.3rem)]">
-              The value is not just volume.
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {principles.map((p, i) => (
-              <Reveal key={p.title} delay={i * 80}>
-                <div className="h-px w-full bg-line-strong">
-                  <div className="h-px w-10 bg-accent" />
-                </div>
-                <h3 className="display mt-5 text-2xl">{p.title}</h3>
-                <p className="lede mt-3 text-[0.96rem]">{p.blurb}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ========================== FINAL CTA ========================== */}
       <section className="border-b border-line">
         <div className="container-arc py-20 md:py-28">
@@ -339,7 +196,7 @@ export default function HomePage() {
           </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
-            <Reveal className="group flex flex-col rounded-2xl border border-line bg-accent-soft p-8 md:p-10">
+            <Reveal className="flex flex-col rounded-2xl border border-line bg-accent-soft p-8 md:p-10">
               <p className="eyebrow">AI buyers</p>
               <p className="display mt-5 text-2xl">
                 Describe the dataset or capability you are looking for.
@@ -356,7 +213,7 @@ export default function HomePage() {
 
             <Reveal
               delay={120}
-              className="group flex flex-col rounded-2xl border border-line bg-card p-8 md:p-10"
+              className="flex flex-col rounded-2xl border border-line bg-card p-8 md:p-10"
             >
               <p className="eyebrow eyebrow-muted">Companies</p>
               <p className="display mt-5 text-2xl">
@@ -373,9 +230,9 @@ export default function HomePage() {
                 )}
               </ul>
               <div className="mt-8">
-                <Button asChild variant="outline">
+                <Button asChild variant="primary" className="font-semibold">
                   <Link href={cta.supplier.href}>
-                    Explore licensing
+                    License your data
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
